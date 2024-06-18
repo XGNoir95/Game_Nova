@@ -67,4 +67,47 @@ router.delete("/delete-game", authenticateToken, async (req, res) => {
         return res.status(500).json({message: "Internal Server Error"});
     }
 });
+
+//get all games
+router.get("/get-all-games",async(req,res)=>{
+        try{
+            const games = await Game.find().sort({createdAt: -1});
+            return res.json({
+                status: "Success",
+                data: games,
+            });
+        }catch(error){
+            console.log(error);
+            return res.status(500).json({message: "Internal Server Error"});
+        }
+    });
+
+//get recently addded games limit:4
+router.get("/get-recent-games", async(req,res)=>{
+    try{
+        const games = await Game.find().sort({createdAt: -1}).limit(4);
+        return res.json({
+            status: "Success",
+            data: games,
+        });
+    }catch(error){
+        console.log(error);
+        return res.status(500).json({message: "Internal Server Error"});
+    }
+});
+
+//get game by id(get details)
+router.get("/get-game-by-id/:id",async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const game = await Game.findById(id);
+        return res.json({
+            status: "Success",
+            data: game,
+        });
+    }catch(error){
+        console.log(error);
+        return res.status(500).json({message: "Internal Server Error"});
+    }
+});
 module.exports = router;
