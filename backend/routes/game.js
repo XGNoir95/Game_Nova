@@ -21,6 +21,9 @@ router.post("/add-game", authenticateToken, async (req, res) => {
       price: req.body.price,
       desc: req.body.desc,
       platform: req.body.platform,
+      rating: req.body.rating,  // Added rating field
+      genre: req.body.genre,    // Added genre field
+      year: req.body.year       // Added year field
     });
 
     await game.save();
@@ -41,6 +44,9 @@ router.put("/update-game", authenticateToken, async (req, res) => {
         price: req.body.price,
         desc: req.body.desc,
         platform: req.body.platform,
+        rating: req.body.rating,  // Added rating field
+        genre: req.body.genre,    // Added genre field
+        year: req.body.year       // Added year field
       });
   
       return res.status(200).json({
@@ -110,4 +116,66 @@ router.get("/get-game-by-id/:id",async(req,res)=>{
         return res.status(500).json({message: "Internal Server Error"});
     }
 });
+
+// Get games with pagination, search, and sorting
+router.get("/sort-games", async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) - 1 || 0;
+    const limit = parseInt(req.query.limit) || 5;
+    const search = req.query.search || "";
+    let sort = req.query.sort || "rating";
+    let genre = req.query.genre || "All";
+
+    const genreOptions = [
+      "Action",
+      "Adventure",
+      "RPG",
+      "Strategy",
+      "Shooter",
+      "Thriller",
+      "Fantasy",
+      "Sports",
+      "Horror",
+    ];
+
+    genre === "All"
+      ? (genre = [...genreOptions])
+      : (genre = req.query.genre.split(","));
+    req.query.sort ? (sort = req.query.sort.split(",")) : (sort = [sort]);
+
+    let sortBy = {};
+    if (sort[1]) {
+      sortBy[sort[0]] = sort[1];
+    } else {
+      sortBy[sort[0]] = "asc";
+    }
+
+    const games = await Game.find({ title: { $regex: search, $options: "i" } })
+      .where("genre")
+      .in([...genre])
+      .sort(sortBy)
+      .skip(page * limit)
+      .limit(limit);
+
+    const total = await Game.countDocuments({
+      genre: { $in: [...genre] },
+      title: { $regex: search, $options: "i" },
+    });
+
+    const response = {
+      error: false,
+      total,
+      page: page + 1,
+      limit,
+      genres: genreOptions,
+      games,
+    };
+
+    res.status(200).json(response);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: true, message: "Internal Server Error" });
+  }
+});
+
 module.exports = router;

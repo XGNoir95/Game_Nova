@@ -1,33 +1,45 @@
 const mongoose = require("mongoose");
 
-const game = new mongoose.Schema(
+const gameSchema = new mongoose.Schema(
     {
-        url:{
+        url: {
             type: String,
             required: true,
         },
-        title:{
+        title: {
             type: String,
             required: true,
         },
-        author:{
+        author: {
             type: String,
             required: true,
         },
-        price:{
+        price: {
             type: Number,
             required: true,
         },
-        desc:{
+        desc: {
             type: String,
             required: true,
         },
-        platform:{
+        platform: {
             type: String,
             required: true,
+        },
+        rating: {
+            type: Number,
+            required: true,
+        },
+        genre: {
+            type: [String],
+            required: true,
+        },
+        year: {
+            type: Number,
+            required: true,
         }
-        
     },
-    {timestamps: true}
+    { timestamps: true }
 );
-module.exports = mongoose.model("games", game);
+
+module.exports = mongoose.model("games", gameSchema);
