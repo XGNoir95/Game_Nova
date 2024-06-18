@@ -19,7 +19,7 @@ router.put("/add-game-to-favourite", authenticateToken, async (req, res) => {
 });
 
 // remove game from favourites
-router.delete("/remove-game-from-favourite", authenticateToken, async (req, res) => {
+router.put("/remove-game-from-favourite", authenticateToken, async (req, res) => {
     try {
         const { gameid, id } = req.headers;
         const userData = await User.findById(id);
