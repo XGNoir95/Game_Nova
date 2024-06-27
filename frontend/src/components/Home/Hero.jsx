@@ -7,7 +7,7 @@ const Hero = () => {
             <h1 className="text-6xl lg:text-6x1 font-samibold text-yellow-100 text-center lg:text-left">
                 Discover Your Next Great Game
             </h1>
-            <p className=" mt-4 text-x1 text-zinc-300 text-center lg:text-left">
+            <p className=" mt-4 text-2x1 text-zinc-300 text-center lg:text-left">
                 Game-Nova is a platform for gamers to find and download
                 their favorite games.
             </p>
