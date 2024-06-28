@@ -1,4 +1,3 @@
-// Home.jsx
 import React from "react";
 import Hero from "../components/Home/Hero";
 import Trending from "../components/Home/Trending";
@@ -6,7 +5,7 @@ import RecentlyAdd from "../components/Home/RecentlyAdd"; // Adjust the import p
 
 const Home = () => {
   return (
-    <div className="bg-zinc-900 text-white px-10 py-8">
+    <div className="bg-[#10061f] text-white px-10 py-8"> {/* Updated background color */}
       <Hero />
       <Trending />
       <RecentlyAdd />
