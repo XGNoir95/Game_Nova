@@ -13,9 +13,7 @@ const RecentlyAdd = () => {
         title: 'Call of Duty Warzone',
         genre: 'Single-player, Action, Adventure',
         description: 'Pre-order to instantly unlock the Quicksilver Storm Exotic weapon, a new Exotic Ghost ...',
-        originalPrice: 100,
-        discountedPrice: 60,
-        discountPercentage: 40,
+        Price: 100,
       },
       {
         id: 2,
@@ -23,9 +21,7 @@ const RecentlyAdd = () => {
         title: 'Among Us',
         genre: 'Single-player, Action, Adventure',
         description: 'Pre-order to instantly unlock the Quicksilver Storm Exotic weapon, a new Exotic Ghost ...',
-        originalPrice: 100,
-        discountedPrice: 60,
-        discountPercentage: 40,
+        Price: 100,
       },
       {
         id: 3,
@@ -33,9 +29,7 @@ const RecentlyAdd = () => {
         title: 'Marvels Spider Man 2',
         genre: 'Single-player, Action, Adventure',
         description: 'Pre-order to instantly unlock the Quicksilver Storm Exotic weapon, a new Exotic Ghost ...',
-        originalPrice: 100,
-        discountedPrice: 60,
-        discountPercentage: 40,
+        Price: 100,
       },
       {
         id: 4,
@@ -43,19 +37,20 @@ const RecentlyAdd = () => {
         title: 'Witcher 3',
         genre: 'Single-player, Action, Adventure',
         description: 'Pre-order to instantly unlock the Quicksilver Storm Exotic weapon, a new Exotic Ghost ...',
-        originalPrice: 100,
-        discountedPrice: 60,
-        discountPercentage: 40,
+        Price: 100,
       },
-      // Add more game data similarly
     ];
     setData(mockData);
   }, []);
 
   return (
     <div className="mt-4 px-4">
-      <h4 className="text-4xl text-amber-500">Recently Added Games</h4>
-      <div className="mt-7 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      <div className="flex items-center font-bold">
+        <h4 className="text-4xl text-amber-400">Recently Added</h4>
+        <h4 className="text-4xl text-white ml-2">Games :</h4>
+      </div>
+
+      <div className="mt-5 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {Data.map((item, i) => (
           <div key={i}>
             <GameCard data={item} />
