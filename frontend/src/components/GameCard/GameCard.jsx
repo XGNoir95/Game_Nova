@@ -13,8 +13,8 @@ const GameCard = ({data}) => {
         </div>
        </Link>
       </>
-   );
-  
 };
+  
+
 
 export default GameCard
