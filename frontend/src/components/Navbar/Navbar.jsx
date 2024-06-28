@@ -1,4 +1,4 @@
-import React, { useState } from "react"; // Import useState
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaGripLines } from "react-icons/fa";
 
@@ -26,11 +26,16 @@ const Navbar = () => {
     },
   ];
 
-  const [MobileNav, setMobileNav] = useState("hidden"); // Use useState
+  const [mobileNavVisible, setMobileNavVisible] = useState(false);
+
+  const toggleMobileNav = () => {
+    setMobileNavVisible(!mobileNavVisible);
+    console.log("Mobile nav visibility:", !mobileNavVisible);
+  };
 
   return (
     <>
-      <nav className="z-50 relative flex bg-zinc-800 text-white px-8 py-4 flex items-center justify-between">
+      <nav className="z-50 relative flex bg-zinc-800 text-white px-8 py-4 items-center justify-between">
         <Link to={"/"} className="flex items-center">
           <img
             className="h-10 me-4"
@@ -42,7 +47,7 @@ const Navbar = () => {
 
         <div className="block md:flex items-center space-x-4">
           {/* Links aligned to the right */}
-          <div className="hidden md:ml-auto flex gap-4">
+          <div className="hidden md:ml-auto md:flex gap-4">
             {links.map((item, i) => (
               <Link
                 to={item.link}
@@ -54,7 +59,7 @@ const Navbar = () => {
             ))}
           </div>
           {/* Buttons aligned to the right */}
-          <div className="hidden md:ml-auto flex items-center gap-4">
+          <div className="hidden md:ml-auto md:flex items-center gap-4">
             <Link
               to="/LogIn"
               className="px-2 py-1 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
@@ -69,29 +74,25 @@ const Navbar = () => {
             </Link>
           </div>
           <button
-            className="text-white text-4xl hover:text-zinc-400"
-            onClick={() =>
-              MobileNav === "hidden" ? setMobileNav("block") : setMobileNav("hidden")
-            }
+            className="block md:hidden text-white text-4xl hover:text-zinc-400"
+            onClick={toggleMobileNav}
           >
             <FaGripLines />
           </button>
         </div>
       </nav>
       <div
-        className={`${MobileNav} bg-zinc-800 h-screen absolute top-20 left-0 w-full flex flex-col items-center justify-center`}
+        className={`${
+          mobileNavVisible ? "block" : "hidden"
+        } bg-zinc-800 h-screen absolute top-20 left-0 w-full flex flex-col items-center justify-center`}
       >
         {links.map((item, i) => (
           <Link
             to={item.link}
             className="text-white text-4xl mb-8 font-semibold hover:text-blue-500 transition-all duration-300"
             key={i}
-            onClick={() =>
-              MobileNav === "hidden" ? setMobileNav("block") : setMobileNav("hidden")
-            }
           >
-          
-            {item.title}{" "}
+            {item.title}{""}
           </Link>
         ))}
 
