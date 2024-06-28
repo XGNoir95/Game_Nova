@@ -76,7 +76,7 @@ const AllGame = () => {
     });
 
   return (
-    <div className="bg-gray-800 text-white min-h-screen p-4">
+    <div className="bg-zinc-800 text-white min-h-screen p-4">
       <div className="mb-4 flex flex-col sm:flex-row gap-4">
         <input
           type="text"
