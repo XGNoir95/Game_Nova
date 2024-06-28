@@ -39,7 +39,7 @@ const Navbar = () => {
         <Link to={"/"} className="flex items-center">
           <img
             className="h-8 me-4"
-            src="src/assets/logo.png"
+            src="logo.png"
             alt="logo"
           />
           {/* <h1 className="text-2xl font-semibold"></h1> */}
