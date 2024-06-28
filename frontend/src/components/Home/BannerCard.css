@@ -1,0 +1,24 @@
+.banner-container {  
+    height: 900px; 
+  }
+  
+  .swiper {
+    width: 900px; 
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
