@@ -38,11 +38,11 @@ const Navbar = () => {
       <nav className="z-50 relative flex bg-zinc-800 text-white px-8 py-4 items-center justify-between">
         <Link to={"/"} className="flex items-center">
           <img
-            className="h-10 me-4"
-            src="https://cdn-icons-png.flaticon.com/128/10433/10433049.png"
+            className="h-8 me-4"
+            src="src/assets/logo.png"
             alt="logo"
           />
-          <h1 className="text-2xl font-semibold">Game-Nova</h1>
+          {/* <h1 className="text-2xl font-semibold"></h1> */}
         </Link>
 
         <div className="block md:flex items-center space-x-4">
