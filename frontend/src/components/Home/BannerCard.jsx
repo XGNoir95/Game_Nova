@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -9,7 +9,7 @@ import 'swiper/css/navigation';
 
 import './BannerCard.css';
 
-// import required modules
+// Import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 const BannerCard = () => {
@@ -20,29 +20,27 @@ const BannerCard = () => {
   ];
 
   return (
-    <div>
-      <>
-        <Swiper
-          spaceBetween={30}
-          centeredSlides={true}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            clickable: true,
-          }}
-          navigation={true}
-          modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper"
-        >
-          {images.map((imageUrl, index) => (
-            <SwiperSlide key={index}>
-              <img src={imageUrl} alt={`Slide ${index + 1}`} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </>
+    <div className="banner-container w-full h-full">
+      <Swiper
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="mySwiper"
+      >
+        {images.map((imageUrl, index) => (
+          <SwiperSlide key={index}>
+            <img src={imageUrl} alt={`Slide ${index + 1}`} className="w-full h-auto object-cover" />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 }
