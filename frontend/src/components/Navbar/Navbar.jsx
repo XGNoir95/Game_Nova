@@ -37,12 +37,7 @@ const Navbar = () => {
     <>
       <nav className="z-50 relative flex bg-[#1e0b37] text-white px-8 py-4 items-center justify-between">
         <Link to={"/"} className="flex items-center">
-          <img
-            className="h-8 me-4"
-            src="logo.png"
-            alt="logo"
-          />
-          {/* <h1 className="text-2xl font-semibold"></h1> */}
+          <img className="h-8 me-4" src="logo.png" alt="logo" />
         </Link>
 
         <div className="block md:flex items-center space-x-4">
@@ -84,7 +79,8 @@ const Navbar = () => {
       <div
         className={`${
           mobileNavVisible ? "block" : "hidden"
-        } bg-zinc-800 h-screen absolute top-20 left-0 w-full flex flex-col items-center justify-center`}
+        } h-screen absolute top-20 left-0 w-full flex flex-col items-center justify-center z-50`}
+        style={{ backgroundColor: "#1e0b37" }} // Added inline style here
       >
         {links.map((item, i) => (
           <Link
