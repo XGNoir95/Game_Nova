@@ -8,8 +8,8 @@ import AllGame from "./pages/AllGame";
 import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
 import SignUp from "./pages/SignUP";
-
-const App = () => {
+import ViewGameDetails from "./components/ViewGameDetails/ViewGameDetails";
+const App = () =>{
   return (
     <div>
       
@@ -21,6 +21,7 @@ const App = () => {
           <Route path="/LogIn" element={<LogIn />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="view-game-details/:id" element={<ViewGameDetails/>} />
         </Routes>
         <Footer />
     
