@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const LogIn = () => {
   const [values, setValues] = useState({
-    username: '',
+    email: '',
     password: '',
   });
 
@@ -23,7 +23,7 @@ const LogIn = () => {
 
   const submit = async () => {
     try {
-      if (values.username === "" || values.password === "") {
+      if (values.email === "" || values.password === "") {
         alert("All fields are required");
       } else {
         const response = await axios.post("http://localhost:1000/api/v1/sign-in", values);
@@ -49,31 +49,35 @@ const LogIn = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-zinc-900 px-4">
-      <div className="bg-zinc-800 rounded-lg px-8 py-5 w-full md:w-3/6 lg:w-2/6">
-        <p className="text-zinc-200 text-xl">Log In</p>
+    <div className="min-h-screen flex items-center justify-center" style={{
+      backgroundImage: `url('bg.jpg')`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }}>
+      <div className="bg-[#1e0b37] rounded-lg px-8 py-5 w-full md:w-3/6 lg:w-2/6">
+        <p className="text-amber-500 text-2xl font-bold text-center mb-4">Log In To Your Account:</p>
         <div className="mt-4">
           <div>
-            <label htmlFor="username" className="text-zinc-400">
-              Username
+            <label htmlFor="email" className="text-white">
+              Email
             </label>
             <input
-              type="text"
-              className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
-              placeholder="Username"
-              name="username"
+              type="email"
+              className="w-full mt-2 bg-gray-200 text-black p-2 outline-none"
+              placeholder="Email"
+              name="email"
               required
-              value={values.username}
+              value={values.email}
               onChange={change}
             />
           </div>
           <div className="mt-4">
-            <label htmlFor="password" className="text-zinc-400">
+            <label htmlFor="password" className="text-white">
               Password
             </label>
             <input
               type="password"
-              className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+              className="w-full mt-2 bg-gray-200 text-black p-2 outline-none"
               placeholder="Password"
               name="password"
               required
@@ -83,7 +87,7 @@ const LogIn = () => {
           </div>
           <div className="mt-4">
             <button
-              className="w-full bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 transition-all duration-300"
+              className="w-full bg-purple-800 text-white font-semibold py-2 rounded hover:bg-amber-600 transition-all duration-300"
               onClick={submit}
             >
               Log In
@@ -91,7 +95,7 @@ const LogIn = () => {
           </div>
           <p className="flex mt-4 items-center text-zinc-500 font-semibold">
             Don't have an account?
-            <a href="/SignUp" className="text-blue-500 ml-2">
+            <a href="/SignUp" className="text-amber-500 ml-2">
               Sign Up
             </a>
           </p>

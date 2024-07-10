@@ -5,7 +5,10 @@ import RecentlyAdd from "../components/Home/RecentlyAdd"; // Adjust the import p
 
 const Home = () => {
   return (
-    <div className="bg-[#10061f] text-white px-10 py-8"> {/* Updated background color */}
+    <div 
+      className="min-h-screen bg-cover bg-center text-white px-10 py-8" 
+      style={{ backgroundImage: `url('bg2.jpg')` }}
+    >
       <Hero />
       <Trending />
       <RecentlyAdd />

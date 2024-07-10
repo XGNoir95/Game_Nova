@@ -42,17 +42,22 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-zinc-900 px-4">
-      <div className="bg-zinc-800 rounded-lg px-8 py-5 w-full md:w-3/6 lg:w-2/6">
-        <p className="text-zinc-200 text-xl">Sign up</p>
+    <div className="min-h-screen flex items-center justify-center" style={{
+      backgroundImage: `url('bg.jpg')`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }}>
+      <div className="bg-[#1e0b37] rounded-lg px-8 py-5 w-full md:w-3/6 lg:w-2/6">
+      <p className="text-amber-500 text-2xl font-bold text-center mb-4">Sign Up:</p>
+        
         <div className="mt-4">
           <div>
-            <label htmlFor="username" className="text-zinc-400">
+            <label htmlFor="username" className="text-white">
               Username
             </label>
             <input
               type="text"
-              className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+              className="w-full mt-2 bg-gray-200 text-black p-2 outline-none"
               placeholder="Username"
               name="username"
               required
@@ -61,12 +66,12 @@ const SignUp = () => {
             />
           </div>
           <div className="mt-4">
-            <label htmlFor="email" className="text-zinc-400">
+            <label htmlFor="email" className="text-white">
               Email
             </label>
             <input
               type="email"
-              className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+              className="w-full mt-2 bg-gray-200 text-black p-2 outline-none"
               placeholder="Email"
               name="email"
               required
@@ -75,12 +80,12 @@ const SignUp = () => {
             />
           </div>
           <div className="mt-4">
-            <label htmlFor="password" className="text-zinc-400">
+            <label htmlFor="password" className="text-white">
               Password
             </label>
             <input
               type="password"
-              className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+              className="w-full mt-2 bg-gray-200 text-black p-2 outline-none"
               placeholder="Password"
               name="password"
               required
@@ -89,11 +94,11 @@ const SignUp = () => {
             />
           </div>
           <div className="mt-4">
-            <label htmlFor="address" className="text-zinc-400">
+            <label htmlFor="address" className="text-white">
               Address
             </label>
             <textarea
-              className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+              className="w-full mt-2 bg-gray-200 text-black p-2 outline-none"
               rows="5"
               placeholder="Address"
               name="address"
@@ -104,7 +109,7 @@ const SignUp = () => {
           </div>
           <div className="mt-4">
             <button
-              className="w-full bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600"
+              className="w-full bg-purple-800 text-white font-semibold py-2 rounded hover:bg-amber-600 transition-all duration-300"
               onClick={submit}
             >
               Sign Up
@@ -112,7 +117,7 @@ const SignUp = () => {
           </div>
           <p className="flex mt-4 items-center text-zinc-500 font-semibold">
             Already have an account?
-            <a href="/LogIn" className="text-blue-500 ml-2">
+            <a href="/LogIn" className="text-amber-500 ml-2">
               Log In
             </a>
           </p>

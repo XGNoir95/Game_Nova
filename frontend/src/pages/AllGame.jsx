@@ -42,7 +42,10 @@ const AllGame = () => {
     });
 
   return (
-    <div className="bg-[#10061f] text-white min-h-screen p-4">
+    <div 
+      className="min-h-screen bg-cover bg-center text-white px-10 py-8" 
+      style={{ backgroundImage: `url('bg2.jpg')` }}
+    >
       <SearchOptions
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
