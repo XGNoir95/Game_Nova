@@ -51,30 +51,40 @@ const Navbar = () => {
           {/* Links aligned to the right */}
           <div className="hidden md:ml-auto md:flex gap-4">
             {links.map((item, i) => (
-              <Link
+             <div className="flex items-center">
+             {item.title==="Profile"? <Link
+                to={item.link}
+                className="px-2 py-1 border border-purple-500 rounded hover:bg-white hover:text-purple-800 transition-all duration-300"
+                key={i}
+              >
+                {item.title}
+              </Link>: <Link
                 to={item.link}
                 className="hover:text-purple-500 transition-all duration-300"
                 key={i}
               >
                 {item.title}
-              </Link>
+              </Link>}
+             </div>
             ))}
           </div>
           {/* Buttons aligned to the right */}
-          <div className="hidden md:ml-auto md:flex items-center gap-4">
-            <Link
-              to="/LogIn"
-              className="px-2 py-1 border border-purple-500 rounded hover:bg-white hover:text-purple-800 transition-all duration-300"
-            >
-              LogIn
-            </Link>
-            <Link
-              to={"/SignUp"}
-              className="px-2 py-1 bg-purple-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
-            >
-              SignUp
-            </Link>
-          </div>
+         {isLoggedIn== false &&(
+           <div className="hidden md:ml-auto md:flex items-center gap-4">
+           <Link
+             to="/LogIn"
+             className="px-2 py-1 border border-purple-500 rounded hover:bg-white hover:text-purple-800 transition-all duration-300"
+           >
+             LogIn
+           </Link>
+           <Link
+             to={"/SignUp"}
+             className="px-2 py-1 bg-purple-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
+           >
+             SignUp
+           </Link>
+         </div>
+         )}
           <button
             className="block md:hidden text-white text-4xl hover:text-zinc-400"
             onClick={toggleMobileNav}
@@ -99,18 +109,23 @@ const Navbar = () => {
           </Link>
         ))}
 
-        <Link
-          to={"/LogIn"}
-          className="px-8 mb-8 text-3xl font-semibold py-2 border border-blue-500 text-white rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
-        >
-          LogIn
-        </Link>
-        <Link
-          to={"/SignUp"}
-          className="px-8 mb-8 text-3xl font-semibold py-2 bg-blue-500 text-white rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
-        >
-          SignUp
-        </Link>
+       {isLoggedIn === false && (
+        <>
+         <Link
+         to={"/LogIn"}
+         className="px-8 mb-8 text-3xl font-semibold py-2 border border-blue-500 text-white rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
+       >
+         LogIn
+       </Link>
+       <Link
+         to={"/SignUp"}
+         className="px-8 mb-8 text-3xl font-semibold py-2 bg-blue-500 text-white rounded hover:bg-white hover:text-zinc-800 transition-all duration-300"
+       >
+         SignUp
+       </Link>
+       </>
+        
+       )}
       </div>
     </>
   );
