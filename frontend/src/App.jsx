@@ -10,6 +10,7 @@ import Profile from "./pages/Profile";
 import SignUp from "./pages/SignUP";
 import { useDispatch,useSelector } from "react-redux";
 import { authActions } from "./Store/auth";
+import ViewGameDetails from "./components/ViewGameDetails/ViewGameDetails";
 
 const App = () => {
   const dispatch =useDispatch();
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="/LogIn" element={<LogIn />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="view-game-details/:id" element={<ViewGameDetails/>} />
         </Routes>
         <Footer />
     
