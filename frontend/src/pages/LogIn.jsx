@@ -34,7 +34,11 @@ const LogIn = () => {
 
         localStorage.setItem("id", response.data.id);
         localStorage.setItem("token", response.data.token);
+        localStorage.setItem("refreshToken", response.data.refreshToken); // Store refresh token
         localStorage.setItem("role", response.data.role);
+
+        console.log("Access Token:", localStorage.getItem("token"));
+        console.log("Refresh Token:", localStorage.getItem("refreshToken"));
 
         navigate("/profile");
       }

@@ -4,6 +4,9 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { authenticateToken } = require("./userAuth");
 
+const JWT_SECRET = "gameStore123";
+const JWT_REFRESH_SECRET = "your_jwt_refresh_secret";
+
 // Sign Up
 router.post("/sign-up", async (req, res) => {
     try {
@@ -46,7 +49,6 @@ router.post("/sign-up", async (req, res) => {
     }
 });
 
-// Sign In
 router.post("/sign-in", async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -55,25 +57,39 @@ router.post("/sign-in", async (req, res) => {
             return res.status(400).json({ message: "Invalid credentials" });
         }
 
-        await bcrypt.compare(password, existingUser.password, (err, data) => {
-            if (data) {
-                const authClaims = [
-                    { name: existingUser.username },
-                    { role: existingUser.role },
-                ];
-                const token = jwt.sign({ authClaims }, "gameStore123", { expiresIn: "30d" });
-                res.status(200).json({
-                    id: existingUser._id,
-                    role: existingUser.role,
-                    token: token,
-                });
-            } else {
-                res.status(400).json({ message: "Invalid credentials" });
-            }
+        const isPasswordValid = await bcrypt.compare(password, existingUser.password);
+        if (!isPasswordValid) {
+            return res.status(400).json({ message: "Invalid credentials" });
+        }
+
+        const authClaims = [
+            { name: existingUser.username },
+            { role: existingUser.role },
+        ];
+        const token = jwt.sign({ authClaims }, JWT_SECRET, { expiresIn: "1m" });
+        const refreshToken = jwt.sign({ authClaims }, JWT_REFRESH_SECRET, { expiresIn: "1d" });
+
+        res.status(200).json({
+            id: existingUser._id,
+            role: existingUser.role,
+            token: token,
+            refreshToken: refreshToken
         });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
+});
+
+// Refresh Token
+router.post("/token", (req, res) => {
+    const { token } = req.body;
+    if (!token) return res.status(401).json({ message: "Token is required" });
+
+    jwt.verify(token, JWT_REFRESH_SECRET, (err, user) => {
+        if (err) return res.status(403).json({ message: "Invalid or expired refresh token" });
+        const newAccessToken = jwt.sign({ authClaims: user.authClaims }, JWT_SECRET, { expiresIn: "20m" });
+        res.json({ accessToken: newAccessToken });
+    });
 });
 
 // Get user info
