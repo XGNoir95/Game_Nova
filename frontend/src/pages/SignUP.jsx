@@ -25,16 +25,16 @@ const SignUp = () => {
       if (values.username === "" || values.email === "" || values.password === "" || values.address === "") {
         alert("All fields are required");
       } else {
-        const response = await axios.post("http://localhost:1000/api/v1/sign-up", values);
+        const response = await axios.post("https://game-nova-api.vercel.app/api/v1/sign-up", values, { withCredentials: true });
         console.log("Signup Successful:", response.data);
-        navigate("/LogIn"); // Redirect after successful signup
+        navigate("/LogIn");
       }
     } catch (error) {
       console.error("Axios Error:", error);
       if (error.response) {
         console.log("Response Data:", error.response.data);
         console.log("Response Status:", error.response.status);
-        alert("Error: " + error.response.data.message); // Example: show error message to user
+        alert("Error: " + error.response.data.message);
       } else {
         console.error("General Error:", error.message);
       }
@@ -48,7 +48,7 @@ const SignUp = () => {
       backgroundPosition: 'center',
     }}>
       <div className="bg-[#1e0b37] rounded-lg px-8 py-5 w-full md:w-3/6 lg:w-2/6">
-      <p className="text-amber-500 text-2xl font-bold text-center mb-4">Sign Up:</p>
+        <p className="text-amber-500 text-2xl font-bold text-center mb-4">Sign Up:</p>
         
         <div className="mt-4">
           <div>
