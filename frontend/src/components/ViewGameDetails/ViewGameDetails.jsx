@@ -1,13 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import Axios from "axios";
 import Loader from '../Loader/loader';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
+// Modal Component
+const Modal = ({ isOpen, onClose, imgSrc }) => {
+    if (!isOpen) return null;
+
+    return (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+            <div className="relative max-w-4xl max-h-full">
+                <img src={imgSrc} alt="Full-size" className="object-contain w-full h-full" />
+                <button 
+                    onClick={onClose} 
+                    className="absolute top-4 right-4 text-white bg-gray-800 p-2 rounded"
+                >
+                    Close
+                </button>
+            </div>
+        </div>
+    );
+};
 
 const ViewGameDetails = () => {
     const { id } = useParams();
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -25,6 +45,9 @@ const ViewGameDetails = () => {
 
         fetchData();
     }, [id]);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
 
     if (loading) {
         return <Loader />;
@@ -44,29 +67,41 @@ const ViewGameDetails = () => {
             style={{ backgroundImage: `url('/bg2.jpg')` }}
         >
             <div className='px-12 py-8 flex gap-8'>
-                <div className='bg-white-800 rounded p-4 h-[90vh] w-3/6 flex items-center justify-center'>
-                    <img src={data.url} alt="Game" className='h-[85vh]' />
+                {/* Image Container */}
+                <div 
+            className="min-h-screen bg-cover bg-center text-white px-10 py-8" 
+            style={{ backgroundImage: `url('/bg.jpg')` }}
+        >
+                    <div className='relative w-full max-w-[800px] max-h-[500px]  mt-36'>
+                        <img 
+                            src={data.url} 
+                            alt="Game" 
+                            className='object-cover w-full h-full rounded cursor-pointer' 
+                            onClick={openModal}
+                        />
+                    </div>
                 </div>
+                {/* Details Section */}
                 <div className='p-4 w-3/6'>
-                    <h1 className="text-4xl text-zinc-300 font-semibold">
+                    <h1 className="text-5xl text-amber-500 font-bold">
                         {data.title}
                     </h1>
-                    <p className='text-zinc-300 mt-1'>by - {data.author}</p>
-                    <p className='text-zinc-500 mt-4 text-xl'>{data.desc}</p>
-                    <p className='text-zinc-500 mt-4 text-2xl'>Genre: {data.genre}</p>
-                    <p className='text-zinc-500 mt-4 text-2xl'>Platform: {data.platform}</p>
-                    <p className='text-zinc-500 mt-4 text-3xl'>Rating: {data.rating}</p>
-                    <p className='mt-4 text-zinc-100 text-3xl font-semibold'>
-                        Price: ${data.price}
-                    </p>
-               
-                <div className='mt-4 gap-4'>
-                <Link to={"/SignUp"} className="bg-purple-800 text-white px-4 py-2 rounded w-full md:w-auto justify-between gap-4">
-                
-                BUY NOW</Link>
-                </div>
+                    <p className='text-2xl text-zinc-300 mt-3'>by - {data.author}</p>
+                    <p className='text-amber-500 mt-14 text-3xl font-semibold'>Description:</p>
+                    <p className='text-zinc-300 mt-4 text-2xl '>{data.desc}</p>
+                    <p className='text-amber-500 mt-4 text-2xl font-semibold'>Genre: <span className='text-zinc-300'>{data.genre}</span></p>
+                    <p className='text-amber-500 mt-4 text-2xl font-semibold'>Platform: <span className='text-zinc-300'>{data.platform}</span></p>
+                    <p className='text-amber-500 mt-4 text-2xl font-semibold'>Rating: <span className='text-zinc-300'>{data.rating}</span></p>
+                    <p className='text-amber-500 mt-8 text-2xl font-bold'>Price: <span className='text-zinc-300'>${data.price}</span></p>
+                    
+                    <div className='mt-8 gap-4'>
+                    <button className="bg-purple-800 rounded hover:bg-pink-500 hover:text-white px-6 py-3 w-full md:w-auto text-xl">ADD TO CART</button>
+                    </div>
                 </div>
             </div>
+
+            {/* Modal for Full-Size Image */}
+            <Modal isOpen={isModalOpen} onClose={closeModal} imgSrc={data.url} />
         </div>
     );
 };
