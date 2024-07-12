@@ -8,13 +8,15 @@ const AllGame = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("");
   const [selectedRating, setSelectedRating] = useState("");
-  const [selectedPrice, setSelectedPrice] = useState(300); // Set the max price according to your data
+  const [selectedPrice, setSelectedPrice] = useState(300); 
   const [selectedPlatform, setSelectedPlatform] = useState("");
 
   const getData = async () => {
     try {
-      const response = await Axios.get("http://localhost:1000/api/v1/sort-games");
-      console.log(response.data.games); // Log the response to the console
+      const response = await Axios.get("https://game-nova-api.vercel.app/api/v1/sort-games", {
+        withCredentials: true
+      });
+      console.log(response.data.games); 
       setData(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
