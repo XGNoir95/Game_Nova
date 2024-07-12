@@ -31,6 +31,11 @@ const ViewGameDetails = () => {
 
     useEffect(() => {
         const fetchData = async () => {
+            const token = localStorage.getItem('token');
+            const headers = {
+                authorization: `Bearer ${token}`,
+            };
+            
             try {
                 const response = await Axios.get(`https://game-nova-api.vercel.app/api/v1/get-game-by-id/${id}`, {
                     headers,
@@ -72,17 +77,15 @@ const ViewGameDetails = () => {
             <div className='px-12 py-8 flex gap-8'>
                 {/* Image Container */}
                 <div 
-            className="min-h-screen bg-cover bg-center text-white px-10 py-8" 
-            style={{ backgroundImage: `url('/bg.jpg')` }}
-        >
-                    <div className='relative w-full max-w-[800px] max-h-[500px]  mt-36'>
-                        <img 
-                            src={data.url} 
-                            alt="Game" 
-                            className='object-cover w-full h-full rounded cursor-pointer' 
-                            onClick={openModal}
-                        />
-                    </div>
+                    className="relative w-full max-w-[800px] max-h-[500px] mt-36"
+                    style={{ backgroundImage: `url('/bg.jpg')` }}
+                >
+                    <img 
+                        src={data.url} 
+                        alt="Game" 
+                        className='object-cover w-full h-full rounded cursor-pointer' 
+                        onClick={openModal}
+                    />
                 </div>
                 {/* Details Section */}
                 <div className='p-4 w-3/6'>
@@ -98,7 +101,7 @@ const ViewGameDetails = () => {
                     <p className='text-amber-500 mt-8 text-2xl font-bold'>Price: <span className='text-zinc-300'>${data.price}</span></p>
                     
                     <div className='mt-8 gap-4'>
-                    <button className="bg-purple-800 rounded hover:bg-pink-500 hover:text-white px-6 py-3 w-full md:w-auto text-xl">ADD TO CART</button>
+                        <button className="bg-purple-800 rounded hover:bg-pink-500 hover:text-white px-6 py-3 w-full md:w-auto text-xl">ADD TO CART</button>
                     </div>
                 </div>
             </div>
