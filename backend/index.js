@@ -12,7 +12,7 @@ const Cart = require("./routes/cart");
 const Order = require("./routes/order");
 
 app.use(cors({
-    origin: ["https://gn-old-front.vercel.app"],
+    origin: ["https://game-nova-front.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true
 }));
