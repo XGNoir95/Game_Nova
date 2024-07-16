@@ -20,10 +20,19 @@ const Profile = () => {
   useEffect(() => {
     const fetch = async () => {
       try {
+        // const response = await axios.get(
+        //   'https://game-nova-api.vercel.app/api/v1/get-user-information',
+        //   { headers, withCredentials: true }
+        // );
+
+
         const response = await axios.get(
-          'https://game-nova-api.vercel.app/api/v1/get-user-information',
-          { headers, withCredentials: true }
+          'http://localhost:1000/api/v1/get-user-information',
+          { headers }
         );
+
+
+
         console.log('Fetched Profile data:', response.data);
         setProfile(response.data);
       } catch (error) {
@@ -32,27 +41,48 @@ const Profile = () => {
           // Try to refresh the access token
           if (refreshToken) {
             try {
+              // const refreshResponse = await axios.post(
+              //   'https://game-nova-api.vercel.app/api/v1/token',
+              //   { token: refreshToken },
+              //   { withCredentials: true }
+              // );
+
+
               const refreshResponse = await axios.post(
-                'https://game-nova-api.vercel.app/api/v1/token',
-                { token: refreshToken },
-                { withCredentials: true }
+                'http://localhost:1000/api/v1/token',
+                { token: refreshToken }
               );
+
+
               const newAccessToken = refreshResponse.data.accessToken;
               localStorage.setItem('token', newAccessToken);
 
               console.log('New JWT Token:', newAccessToken);
 
               // Retry fetching the profile data with the new token
+              // const retryResponse = await axios.get(
+              //   'https://game-nova-api.vercel.app/api/v1/get-user-information',
+              //   {
+              //     headers: {
+              //       id: localStorage.getItem('id'),
+              //       authorization: `Bearer ${newAccessToken}`,
+              //     },
+              //     withCredentials: true
+              //   }
+              // );
+
+
               const retryResponse = await axios.get(
-                'https://game-nova-api.vercel.app/api/v1/get-user-information',
+                'http://localhost:1000/api/v1/get-user-information',
                 {
                   headers: {
                     id: localStorage.getItem('id'),
                     authorization: `Bearer ${newAccessToken}`,
                   },
-                  withCredentials: true
                 }
               );
+
+              
               setProfile(retryResponse.data);
             } catch (refreshError) {
               console.error('Error refreshing token:', refreshError);

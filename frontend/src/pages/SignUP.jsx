@@ -25,7 +25,12 @@ const SignUp = () => {
       if (values.username === "" || values.email === "" || values.password === "" || values.address === "") {
         alert("All fields are required");
       } else {
-        const response = await axios.post("https://game-nova-api.vercel.app/api/v1/sign-up", values, { withCredentials: true });
+
+
+        // const response = await axios.post("https://game-nova-api.vercel.app/api/v1/sign-up", values, { withCredentials: true });
+        
+        
+        const response = await axios.post("http://localhost:1000/api/v1/sign-up", values);
         console.log("Signup Successful:", response.data);
         navigate("/LogIn");
       }

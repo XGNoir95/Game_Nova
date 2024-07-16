@@ -1,7 +1,7 @@
 import React from "react";
 import Hero from "../components/Home/Hero";
 import Trending from "../components/Home/Trending";
-import RecentlyAdd from "../components/Home/RecentlyAdd"; // Adjust the import path based on your project structure
+import RecentlyAdd from "../components/Home/RecentlyAdd";
 
 const Home = () => {
   return (

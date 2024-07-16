@@ -37,10 +37,14 @@ const ViewGameDetails = () => {
             };
             
             try {
-                const response = await Axios.get(`https://game-nova-api.vercel.app/api/v1/get-game-by-id/${id}`, {
-                    headers,
-                    withCredentials: true,
-                });
+
+
+                // const response = await Axios.get(`https://game-nova-api.vercel.app/api/v1/get-game-by-id/${id}`, {
+                //     headers,
+                //     withCredentials: true,
+                // });
+
+                const response = await Axios.get(`http://localhost:1000/api/v1/get-game-by-id/${id}`);
                 console.log(response);
                 setData(response.data.data);
             } catch (error) {
