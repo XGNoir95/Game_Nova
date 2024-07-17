@@ -98,28 +98,48 @@ const Profile = () => {
     fetch();
   }, [token, refreshToken]);
 
+  // return (
+  //   <div
+  //     className="min-h-screen bg-cover bg-center text-white px-14 py-8 "
+  //     style={{ backgroundImage: `url('bg2.jpg')` }}
+  //   >
+  //     {!Profile && (
+  //       <div className='w-full h-full flex items-center justify-center'>
+  //         <Loader />
+  //       </div>
+  //     )}
+  //     {Profile && (
+  //       <div className="flex flex-col md:flex-row items-center justify-center min-h-screen">
+  //         <div className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 order-2 md:order-1">
+  //           <Sidebar data={Profile} />
+  //         </div>
+  //         <div className="w-full md:w-5/6 order-1 md:order-2">
+  //           <Outlet />
+  //         </div>
+  //       </div>
+  //     )}
+  //   </div>
+  // );
   return (
-    <div 
-      className="min-h-screen bg-cover bg-center text-white px-10 py-8" 
-      style={{ backgroundImage: `url('bg2.jpg')` }}
-    > 
-      {!Profile && (
+    <div className="bg-purple-900 px-2 md:px-12 flex flex-col md:flex-row py-8 gap-4 text-white">
+      {!Profile &&(
         <div className='w-full h-[100%] flex items-center justify-center'>
           <Loader />
         </div>
-      )}
-      {Profile && (
-        <div className="flex flex-col items-center justify-center min-h-screen">
-          <div className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4">
-            <Sidebar data={Profile} />
-          </div>
-          <div className="w-full md:w-5/6">
-            <Outlet />
-          </div>
+        )}
+      {Profile&&(
+        <>
+        <div className="w-full md:w-1/6 h-screen">
+          <Sidebar data={Profile} />
         </div>
+        <div className="w-full md:w-5/6">
+          <Outlet />
+        </div>
+        </>
       )}
     </div>
   );
+
 };
 
 export default Profile;
