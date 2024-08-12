@@ -18,7 +18,7 @@ const Sidebar = ({ data }) => {
       navigate('/LogIn');
     };
   return (
-    <div className="bg-[#1e0b37] p-4 rounded flex flex-col items-center justify-between h-[100%]">
+    <div className="bg-[#1e0b37] p-4 rounded flex flex-col items-center justify-between h-auto lg:h-[100%]">
       <div className='flex items-center flex-col justify-center mb-8'>
          {data && data.avatar ? (
           <img src={data.avatar} className="h-32 w-32 rounded-full mb-4" alt="User Avatar" />
