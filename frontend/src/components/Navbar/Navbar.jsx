@@ -18,7 +18,7 @@ const Navbar = () => {
 
     // Dispatch logout action
     dispatch(authActions.logout());
-
+    dispatch(authActions.changeRole("user"));
     // Redirect to home page
     navigate('/');
 
@@ -56,13 +56,27 @@ const Navbar = () => {
         link: "/profile",
       },
       {
+        title: "Admin Profile",
+        link: "/profile",
+      },
+      {
         title: "Log Out",
         link: "/logout",
         action: handleLogout,
       }
     );
+  };
+  // const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const role = useSelector((state) => state.auth.role);
+  if(isLoggedIn === false){
+    links.splice(2,2);
   }
-
+  if(isLoggedIn == true && role === "user"){
+    links.splice(4,1);
+  }
+  if(isLoggedIn == true && role === "admin"){
+    links.splice(3,1);
+  }
   return (
     <>
       <nav className="z-50 relative flex bg-[#1e0b37] text-white px-8 py-4 items-center justify-between">
@@ -75,7 +89,8 @@ const Navbar = () => {
           <div className="hidden md:ml-auto md:flex gap-4">
             {links.map((item, i) => (
               <div className="flex items-center" key={i}>
-                {item.title === "Profile" ? (
+                {item.title === "Profile" || 
+                item.title === "Admin Profile" ? (
                   <Link
                     to={item.link}
                     className="px-2 py-1 border border-pink-500 rounded hover:bg-pink-500 hover:text-white transition-all duration-300"
