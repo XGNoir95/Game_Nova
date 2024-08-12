@@ -8,7 +8,7 @@ const AllGame = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("");
   const [selectedRating, setSelectedRating] = useState("");
-  const [selectedPrice, setSelectedPrice] = useState(300); 
+  const [selectedPrice, setSelectedPrice] = useState(1000); 
   const [selectedPlatform, setSelectedPlatform] = useState("");
 
   const getData = async () => {

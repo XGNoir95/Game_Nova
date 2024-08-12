@@ -64,7 +64,7 @@ const SearchOptions = ({
         <input
           type="range"
           min="0"
-          max="300"
+          max="1000"
           value={selectedPrice}
           onChange={(e) => setSelectedPrice(e.target.value)}
           className="w-full h-4 bg-gray-300 rounded-lg appearance-none cursor-pointer"
