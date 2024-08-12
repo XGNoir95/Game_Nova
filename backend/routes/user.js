@@ -103,16 +103,29 @@ router.get("/get-user-information", authenticateToken, async (req, res) => {
     }
 })
 
-// Update address
-router.put("/update-address", authenticateToken, async (req, res) => {
+// Update user-info
+router.put("/update-profile", authenticateToken, async (req, res) => {
     try {
         const { id } = req.headers;
-        const { address } = req.body;
-        await User.findByIdAndUpdate(id, { address: address });
-        return res.status(200).json({ message: "Address updated successfully" });
+        const { username, email, address, avatar } = req.body;
+
+        // Check if username length is more than 4
+        if (username.length < 4) {
+            return res.status(400).json({ message: "Username should be at least 4 characters long" });
+        }
+
+        // Check if email already exists and it's not the current user's email
+        const existingEmail = await User.findOne({ email: email });
+        const currentUser = await User.findById(id);
+        if (existingEmail && existingEmail.email !== currentUser.email) {
+            return res.status(400).json({ message: "Email already exists" });
+        }
+
+        await User.findByIdAndUpdate(id, { username, email, address, avatar });
+        return res.status(200).json({ message: "Profile updated successfully" });
     } catch (error) {
         res.status(500).json({ message: "Internal Server Error" });
     }
-})
+});
 
 module.exports = router;
