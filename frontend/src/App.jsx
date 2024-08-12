@@ -14,6 +14,8 @@ import ViewGameDetails from "./components/ViewGameDetails/ViewGameDetails";
 import Favourites from "./components/Profile/Favourites";
 import UserOrderHistory from "./components/Profile/UserOrderHistory";  // Make sure this path is correct
 import Settings from "./components/Profile/Settings";
+import AllOrders from "./pages/AllOrders";
+import AddGame from "./pages/AddGame";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -40,7 +42,8 @@ const App = () => {
         <Route path="/LogIn" element={<LogIn />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/profile" element={<Profile />}>
-          <Route index element={<Favourites />} />
+          {role === "user" ? <Route index element={<Favourites />} /> : <Route index element = {<AllOrders/>}/>}
+          {role === "admin" && (<Route path = "/profile/add-game" element = {<AddGame/>}/>)}
           <Route path="/profile/orderHistory" element={<UserOrderHistory />} />
           <Route path="/profile/settings" element={<Settings />} />
         </Route>
