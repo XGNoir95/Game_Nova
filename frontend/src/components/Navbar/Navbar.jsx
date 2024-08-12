@@ -3,10 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaGripLines } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../../Store/auth";
-// Update the path as necessary
 
 const Navbar = () => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const role = useSelector((state) => state.auth.role);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -33,7 +33,7 @@ const Navbar = () => {
     console.log("Mobile nav visibility:", !mobileNavVisible);
   };
 
-  // Define links based on login status
+  // Define links based on login status and role
   let links = [
     {
       title: "Home",
@@ -46,37 +46,33 @@ const Navbar = () => {
   ];
 
   if (isLoggedIn) {
-    links.push(
-      {
-        title: "Cart",
-        link: "/cart",
-      },
-      {
-        title: "Profile",
-        link: "/profile",
-      },
-      {
-        title: "Admin Profile",
-        link: "/profile",
-      },
-      {
-        title: "Log Out",
-        link: "/logout",
-        action: handleLogout,
-      }
-    );
-  };
-  // const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  const role = useSelector((state) => state.auth.role);
-  if(isLoggedIn === false){
-    links.splice(2,2);
+    if (role === "user") {
+      links.push(
+        {
+          title: "Cart",
+          link: "/cart",
+        },
+        {
+          title: "Profile",
+          link: "/profile",
+        }
+      );
+    } else if (role === "admin") {
+      links.push(
+        {
+          title: "Admin Profile",
+          link: "/profile",
+        }
+      );
+    }
+
+    links.push({
+      title: "Log Out",
+      link: "/logout",
+      action: handleLogout,
+    });
   }
-  if(isLoggedIn == true && role === "user"){
-    links.splice(4,1);
-  }
-  if(isLoggedIn == true && role === "admin"){
-    links.splice(3,1);
-  }
+
   return (
     <>
       <nav className="z-50 relative flex bg-[#1e0b37] text-white px-8 py-4 items-center justify-between">
@@ -115,7 +111,6 @@ const Navbar = () => {
               </div>
             ))}
           </div>
-          {/* Buttons aligned to the right */}
           {!isLoggedIn && (
             <div className="hidden md:ml-auto md:flex items-center gap-4">
               <Link
