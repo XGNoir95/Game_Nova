@@ -17,7 +17,11 @@ const Favourites = () => {
   },[FavouriteGames]);
   return (
     <>      
-    {FavouriteGames && FavouriteGames.length === 0 && <div className='text-4xl font-semibold h-[100%] text-amber-500 flex items-center justify-center bg-[#1e0b37]'>No Favourite Games</div>}
+      {FavouriteGames && FavouriteGames.length === 0 && (
+        <div className='text-4xl font-semibold h-[60vh] text-amber-500 flex items-center justify-center bg-[#1e0b37]'>
+          No Favourite Games
+        </div>
+      )}
       <div className="grid grid-cols-4 gap-4">
         {FavouriteGames &&
           FavouriteGames.map((items, i) => (
@@ -25,8 +29,8 @@ const Favourites = () => {
               <GameCard data={items} favourite={true} />
             </div>
           ))}
-      </div></>
-
+      </div>
+    </>
   );
 }
 

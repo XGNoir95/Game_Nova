@@ -6,8 +6,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { FaEdit, FaHeart, FaShoppingCart } from 'react-icons/fa';
 import { MdOutlineDelete } from "react-icons/md";
 
-// Edit Game Modal Component
-// Edit Game Modal Component
 const EditGameModal = ({ isOpen, onClose, gameData, onUpdate }) => {
     const [formData, setFormData] = useState({
         url: gameData.url,
@@ -36,8 +34,8 @@ const EditGameModal = ({ isOpen, onClose, gameData, onUpdate }) => {
         try {
             const response = await Axios.put("http://localhost:1000/api/v1/update-game", formData, { headers });
             alert(response.data.message);
-            window.location.reload();  // Reload the page after alert
-            onUpdate(); // Trigger a re-fetch of data or update the state in the parent component
+            window.location.reload(); 
+            onUpdate(); 
             onClose();
         } catch (error) {
             console.error('Error updating game:', error);
@@ -49,93 +47,93 @@ const EditGameModal = ({ isOpen, onClose, gameData, onUpdate }) => {
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-            <div className="bg-gray-800 text-white p-8 rounded-md shadow-lg w-11/12 max-w-xl">
-                <h2 className="text-2xl font-bold mb-4">Edit Game Details</h2>
+            <div className="bg-[url('/bg.jpg')] text-white p-8 rounded-md shadow-lg w-11/12 max-w-xl max-h-[90vh] overflow-y-auto">
+                <h2 className="text-4xl font-bold mb-4 text-amber-500 text-center">Edit Game Details</h2>
                 <form onSubmit={handleSubmit}>
                     {/* Form Fields */}
                     <div className="mb-4">
-                        <label className="block mb-2">Title</label>
+                        <label className="block mb-2 text-amber-500 text-xl font-semibold">Title</label>
                         <input
                             type="text"
                             name="title"
                             value={formData.title}
                             onChange={handleChange}
-                            className="w-full p-2 border rounded bg-gray-700 text-white"
+                            className="w-full p-2 border rounded bg-gray-200 text-black font-semibold text-lg"
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block mb-2">Author</label>
+                        <label className="block mb-2 text-amber-500 text-xl font-semibold">Author</label>
                         <input
                             type="text"
                             name="author"
                             value={formData.author}
                             onChange={handleChange}
-                            className="w-full p-2 border rounded bg-gray-700 text-white"
+                            className="w-full p-2 border rounded bg-gray-200 text-black font-semibold text-lg"
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block mb-2">Price</label>
+                        <label className="block mb-2 text-amber-500 text-xl font-semibold">Price</label>
                         <input
                             type="text"
                             name="price"
                             value={formData.price}
                             onChange={handleChange}
-                            className="w-full p-2 border rounded bg-gray-700 text-white"
+                            className="w-full p-2 border rounded bg-gray-200 text-black font-semibold text-lg"
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block mb-2">Description</label>
+                        <label className="block mb-2 text-amber-500 text-xl font-semibold">Description</label>
                         <textarea
                             name="desc"
                             value={formData.desc}
                             onChange={handleChange}
-                            className="w-full p-2 border rounded bg-gray-700 text-white"
+                            className="w-full p-2 border rounded bg-gray-200 text-black font-semibold text-lg"
                         ></textarea>
                     </div>
                     <div className="mb-4">
-                        <label className="block mb-2">Platform</label>
+                        <label className="block mb-2 text-amber-500 text-xl font-semibold">Platform</label>
                         <input
                             type="text"
                             name="platform"
                             value={formData.platform}
                             onChange={handleChange}
-                            className="w-full p-2 border rounded bg-gray-700 text-white"
+                            className="w-full p-2 border rounded bg-gray-200 text-black font-semibold text-lg"
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block mb-2">Rating</label>
+                        <label className="block mb-2 text-amber-500 text-xl font-semibold">Rating</label>
                         <input
                             type="text"
                             name="rating"
                             value={formData.rating}
                             onChange={handleChange}
-                            className="w-full p-2 border rounded bg-gray-700 text-white"
+                            className="w-full p-2 border rounded bg-gray-200 text-black font-semibold text-lg"
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block mb-2">Genre</label>
+                        <label className="block mb-2 text-amber-500 text-xl font-semibold">Genre</label>
                         <input
                             type="text"
                             name="genre"
                             value={formData.genre}
                             onChange={handleChange}
-                            className="w-full p-2 border rounded bg-gray-700 text-white"
+                            className="w-full p-2 border rounded bg-gray-200 text-black font-semibold text-lg"
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block mb-2">Year</label>
+                        <label className="block mb-2 text-amber-500 text-xl font-semibold">Year</label>
                         <input
                             type="text"
                             name="year"
                             value={formData.year}
                             onChange={handleChange}
-                            className="w-full p-2 border rounded bg-gray-700 text-white"
+                            className="w-full p-2 border rounded bg-gray-200 text-black font-semibold text-lg mb-3"
                         />
                     </div>
                     {/* Submit and Cancel Buttons */}
                     <div className="flex justify-end">
-                        <button type="button" onClick={onClose} className="bg-gray-500 text-white px-4 py-2 rounded mr-2">Cancel</button>
-                        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Save Changes</button>
+                        <button type="button" onClick={onClose} className="bg-white text-black text-lg font-semibold px-4 py-2 rounded mr-2 hover:bg-red-600 hover:text-amber-500 hover:text-lg hover:font-semibold">Cancel</button>
+                        <button type="submit" className="bg-purple-800 text-amber-500 text-lg font-semibold px-4 py-2 rounded hover:bg-amber-500 hover:text-white hover:text-lg hover:font-semibold">Save Changes</button>
                     </div>
                 </form>
             </div>
@@ -158,11 +156,11 @@ const ViewGameDetails = () => {
     useEffect(() => {
         const fetchData = async () => {
             const token = localStorage.getItem('token');
-            if (!token) {
-                setError('Not authorized');
-                setLoading(false);
-                return;
-            }
+            // if (!token) {
+            //     setError('Not authorized');
+            //     setLoading(false);
+            //     return;
+            // }
             
             const headers = {
                 authorization: `Bearer ${token}`,

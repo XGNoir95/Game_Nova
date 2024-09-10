@@ -8,7 +8,7 @@ const GameCard = ({ data, favourite, refreshFavourites }) => {
     authorization: `Bearer ${localStorage.getItem("token")}`,
     gameid: data._id,
   };
-  
+
   const handleRemoveGame = async () => {
     try {
       const response = await Axios.put(
@@ -25,7 +25,7 @@ const GameCard = ({ data, favourite, refreshFavourites }) => {
   return (
     <div className="bg-[#1e0b37] rounded p-4 relative max-w-sm mx-auto sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl transform transition-transform hover:scale-105 h-full flex flex-col">
       <Link to={`/view-game-details/${data._id}`} className="flex-grow">
-        <img src={data.url} alt={data.title} className="h-[25vh] w-full object-cover rounded"/>
+        <img src={data.url} alt={data.title} className="h-[25vh] w-full object-cover rounded" />
         <div className="p-4 flex flex-col flex-grow">
           <p className="text-lg text-[#d3bbe6]">{data.genre}</p>
           <h5 className="text-3xl text-amber-400">{data.title}</h5>
@@ -35,7 +35,7 @@ const GameCard = ({ data, favourite, refreshFavourites }) => {
       </Link>
       <div className="mt-2 flex justify-center items-center h-20">
         {favourite ? (
-          <button 
+          <button
             className="bg-purple-800 rounded hover:bg-pink-500 hover:text-white px-4 py-2"
             onClick={handleRemoveGame}
           >
@@ -43,9 +43,13 @@ const GameCard = ({ data, favourite, refreshFavourites }) => {
           </button>
         ) : (
           <div className="flex gap-2">
-            <button className="bg-purple-800 rounded hover:bg-pink-500 hover:text-white px-4 py-2">DETAILS</button>
-            <button className="bg-purple-800 rounded hover:bg-pink-500 hover:text-white px-4 py-2">BUY NOW</button>
-          </div>
+            {/* <button className="bg-purple-800 rounded hover:bg-pink-500 hover:text-white px-4 py-2">DETAILS</button> */}
+            <Link
+              to={`/view-game-details/${data._id}`}
+              className="bg-purple-800 rounded hover:bg-pink-500 hover:text-white px-4 py-2 text-center"
+            >
+              BUY NOW
+            </Link>          </div>
         )}
       </div>
     </div>

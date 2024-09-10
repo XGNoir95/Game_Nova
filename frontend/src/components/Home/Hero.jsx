@@ -18,7 +18,7 @@ const Hero = () => {
         <div className="mt-6 md:mt-8">
           <Link
             to="/all-games"
-            className="text-purple-600 text-base md:text-lg lg:text-xl font-semibold border border-purple-500 px-6 md:px-8 lg:px-10 py-2 hover:bg-white rounded-full inline-block"
+            className="text-amber-500 text-base md:text-lg lg:text-xl font-semibold border border-amber-500 px-6 md:px-8 lg:px-10 py-2 hover:bg-pink-500 hover:text-white hover:border-pink-500 rounded-full inline-block"
           >
             Browse Games
           </Link>

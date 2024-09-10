@@ -65,7 +65,7 @@ const Profile = () => {
   }, [token, refreshToken]);
 
   return (
-    <div className="bg-purple-900 px-2 md:px-12 py-8 flex flex-col text-white min-h-screen">
+    <div className="bg-[url('/bg5.jpg')] px-2 md:px-12 py-8 flex flex-col text-white min-h-screen">
       {!Profile && (
         <div className='w-full h-[100%] flex items-center justify-center'>
           <Loader />

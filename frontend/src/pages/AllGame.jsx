@@ -50,7 +50,7 @@ const AllGame = () => {
   return (
     <div 
       className="min-h-screen bg-cover bg-center text-white px-10 py-8" 
-      style={{ backgroundImage: `url('bg2.jpg')` }}
+      style={{ backgroundImage: `url('bg.jpg')` }}
     >
       <SearchOptions
         searchTerm={searchTerm}

@@ -58,18 +58,18 @@ const AddGame = () => {
   };
 
   return (
-    <div className="h-[100%] p-0 md:p-4">
-      <h1 className="text-3xl md:text-5xl font-semibold text-zinc-500 mb-8">
+    <div className="bg-[#1e0b37] px-4 md:px-8 lg:px-8 py-8 text-zinc-100">
+      <h1 className="px-3 text-3xl md:text-5xl font-semibold text-amber-500 mb-8">
         Add Game
       </h1>
-      <div className="p-4 bg-zinc-800 rounded">
+      <div className="p-4 rounded">
         <div>
-          <label htmlFor="" className="text-zinc-400">
+          <label htmlFor="" className="text-amber-500 text-lg font-semibold">
             Image
           </label>
           <input
             type="text"
-            className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+            className="w-full mt-2 bg-gray-200 text-black p-2 outline-none"
             placeholder="url of image"
             name="url"
             required
@@ -78,12 +78,12 @@ const AddGame = () => {
           />
         </div>
         <div className="mt-4">
-          <label htmlFor="" className="text-zinc-400">
+          <label htmlFor="" className="text-amber-500 text-lg font-semibold">
             Title of game
           </label>
           <input
             type="text"
-            className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+            className="w-full mt-2 bg-gray-200 text-black p-2 outline-none"
             placeholder="title of game"
             name="title"
             required
@@ -93,12 +93,12 @@ const AddGame = () => {
         </div>
         <div className="mt-4 flex gap-4">
           <div className="w-1/2">
-            <label htmlFor="" className="text-zinc-400">
+            <label htmlFor="" className="text-amber-500 text-lg font-semibold">
               Author of game
             </label>
             <input
               type="text"
-              className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+              className="w-full mt-2 bg-gray-200 text-black p-2 outline-none"
               placeholder="author of game"
               name="author"
               required
@@ -107,12 +107,12 @@ const AddGame = () => {
             />
           </div>
           <div className="w-1/2">
-            <label htmlFor="" className="text-zinc-400">
+            <label htmlFor="" className="text-amber-500 text-lg font-semibold">
               Price
             </label>
             <input
               type="number"
-              className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+              className="w-full mt-2 bg-gray-200 text-black p-2 outline-none"
               placeholder="price of game"
               name="price"
               required
@@ -123,12 +123,12 @@ const AddGame = () => {
         </div>
         <div className="mt-4 flex gap-4">
           <div className="w-1/2">
-            <label htmlFor="" className="text-zinc-400">
+            <label htmlFor="" className="text-amber-500 text-lg font-semibold">
               Platform
             </label>
             <input
               type="text"
-              className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+              className="w-full mt-2 bg-gray-200 text-black p-2 outline-none"
               placeholder="platform of game"
               name="platform"
               required
@@ -137,12 +137,12 @@ const AddGame = () => {
             />
           </div>
           <div className="w-1/2">
-            <label htmlFor="" className="text-zinc-400">
+            <label htmlFor="" className="text-amber-500 text-lg font-semibold">
               Rating
             </label>
             <input
               type="number"
-              className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+              className="w-full mt-2 bg-gray-200 text-black p-2 outline-none"
               placeholder="rating of game"
               name="rating"
               required
@@ -153,12 +153,12 @@ const AddGame = () => {
         </div>
         <div className="mt-4 flex gap-4">
           <div className="w-1/2">
-            <label htmlFor="" className="text-zinc-400">
+            <label htmlFor="" className="text-amber-500 text-lg font-semibold">
               Genre
             </label>
             <input
               type="text"
-              className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+              className="w-full mt-2 bg-gray-200 text-black p-2 outline-none"
               placeholder="genre of game (comma separated)"
               name="genre"
               required
@@ -167,12 +167,12 @@ const AddGame = () => {
             />
           </div>
           <div className="w-1/2">
-            <label htmlFor="" className="text-zinc-400">
+            <label htmlFor="" className="text-amber-500 text-lg font-semibold">
               Year
             </label>
             <input
               type="number"
-              className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+              className="w-full mt-2 bg-gray-200 text-black p-2 outline-none"
               placeholder="year of release"
               name="year"
               required
@@ -182,11 +182,11 @@ const AddGame = () => {
           </div>
         </div>
         <div className="mt-4">
-          <label htmlFor="" className="text-zinc-400">
+          <label htmlFor="" className="text-amber-500 text-lg font-semibold">
             Description of game
           </label>
           <textarea
-            className="w-full mt-2 bg-zinc-900 text-zinc-100 p-2 outline-none"
+            className="w-full mt-2 bg-gray-200 text-black p-2 outline-none"
             rows="5"
             placeholder="description of game"
             name="desc"
@@ -198,7 +198,7 @@ const AddGame = () => {
         <div className="mt-4">
           <button
             onClick={submit}
-            className="w-full bg-amber-600 text-white py-2 rounded"
+            className="w-full bg-amber-500 text-black py-2 rounded hover:bg-pink-900 hover:text-white "
           >
             Add Game
           </button>

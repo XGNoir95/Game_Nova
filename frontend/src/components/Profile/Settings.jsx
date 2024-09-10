@@ -51,15 +51,15 @@ const Settings = () => {
         </div>
       )}
       {ProfileData && (
-        <div className="h-[100%] p-0 md:p-4 text-zinc-100">
-          <h1 className="text-3xl md:text-5xl font-semibold text-zinc-500 mb-8">
+        <div className="bg-[#1e0b37] h-[100%] p-0 md:p-4 text-zinc-100 ">
+          <h1 className="text-3xl md:text-5xl font-semibold text-amber-500 mb-8 px-12 py-3">
             Settings
           </h1>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 px-12">
             <div className="flex flex-col">
               <label htmlFor="email">Email</label>
               <input
-                className="p-2 rounded bg-zinc-800 mt-2 font-semibold"
+                className="p-2 rounded bg-gray-200 text-black mt-2 font-semibold "
                 type="email"
                 name="email"
                 value={Value.email}
@@ -69,7 +69,7 @@ const Settings = () => {
             <div className="flex flex-col">
               <label htmlFor="username">Username</label>
               <input
-                className="p-2 rounded bg-zinc-800 mt-2 font-semibold"
+                className="p-2 rounded bg-gray-200 text-black mt-2 font-semibold"
                 type="text"
                 name="username"
                 value={Value.username}
@@ -79,7 +79,7 @@ const Settings = () => {
             <div className="flex flex-col">
               <label htmlFor="address">Address</label>
               <textarea
-                className="p-2 rounded bg-zinc-800 mt-2 font-semibold"
+                className="p-2 rounded bg-gray-200 text-black mt-2 font-semibold"
                 rows="5"
                 placeholder="Address"
                 name="address"
@@ -90,7 +90,7 @@ const Settings = () => {
             <div className="flex flex-col">
               <label htmlFor="avatar">Avatar URL</label>
               <input
-                className="p-2 rounded bg-zinc-800 mt-2 font-semibold"
+                className="p-2 rounded bg-gray-200 text-black mt-2 font-semibold mb-4"
                 type="text"
                 name="avatar"
                 placeholder="Avatar URL"
@@ -99,9 +99,9 @@ const Settings = () => {
               />
             </div>
           </div>
-          <div className="mt-4 flex justify-end">
+          <div className="mt-4 flex justify-end px-12 py-2 mt-2">
             <button
-              className="bg-yellow-500 text-zinc-900 font-semibold px-3 py-2 rounded hover:bg-yellow-400 transition-all duration-300"
+              className="bg-amber-500 text-zinc-900 font-semibold px-8 py-2 rounded hover:bg-pink-900 hover:text-zinc-100 transition-all duration-300"
               onClick={submitProfile}
             >
               Update
