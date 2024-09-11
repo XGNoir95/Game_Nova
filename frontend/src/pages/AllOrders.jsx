@@ -12,7 +12,7 @@ const AllOrders = () => {
   const [values, setValues] = useState({ status: "" });
   const [userdiv, setuserDiv] = useState("hidden");
   const [userDivData, setuserDivData] = useState();
-  const headers = { 
+  const headers = {
     id: localStorage.getItem("id"),
     authorization: `Bearer ${localStorage.getItem("token")}`,
   };
@@ -98,21 +98,20 @@ const AllOrders = () => {
             <h1>User Info</h1>
           </div>
         </div>
-  
         {allOrders.length > 0 ? (
           allOrders.map((items, i) => (
             <div
               className="mb-2 w-full text-base md:text-lg rounded py-2 px-2 md:px-4 flex flex-col md:flex-row gap-2 hover:bg-purple-900 hover:cursor-pointer"
               key={i}
             >
-              <div className="flex-[1] md:w-[5%] text-left">
+              <div className="w-[3%]">
                 <h1>{i + 1}</h1>
               </div>
               <div className="flex-[2] md:w-[25%] text-left">
                 {items.game ? (
                   <Link
                     to={`/view-game-details/${items.game._id}`}
-                    className="hover:text-amber-500 font-semibold"
+                    className="hover:text-amber-500"
                   >
                     {items.game.title}
                   </Link>
@@ -120,20 +119,20 @@ const AllOrders = () => {
                   <span>Game information not available</span>
                 )}
               </div>
-              <div className="flex-[4] md:w-[45%] text-left">
+              <div className="w-0 md:w-[45%] hidden md:block">
                 <h1>{items.game?.desc?.slice(0, 50) || "No Description"}</h1>
               </div>
-              <div className="flex-[1] md:w-[10%] text-left">
+              <div className="w-[17%] md:w-[9%]">
                 <h1>${items.game?.price || "0.00"}</h1>
               </div>
-              <div className="flex-[1] md:w-[10%] text-left">
+              <div className="w-[30%] md:w-[16%]">
                 <h1 className="font-semibold">
                   <button
                     className="hover:scale-105 transition-all duration-300"
                     onClick={() => setOptions(i)}
                   >
                     {items.status === "Order placed" ? (
-                      <div className="text-yellow-500">{items.status}</div>
+                      <div className="text-pink-500">{items.status}</div>
                     ) : items.status === "Canceled" ? (
                       <div className="text-red-500">{items.status}</div>
                     ) : items.status === "Out for delivery" ? (
@@ -145,6 +144,7 @@ const AllOrders = () => {
                   <div className={`${options === i ? "block" : "hidden"} flex mt-4`}>
                     <select
                       name="status"
+                      id=""
                       className="bg-gray-800"
                       onChange={change}
                       value={values.status}
@@ -169,9 +169,9 @@ const AllOrders = () => {
                   </div>
                 </h1>
               </div>
-              <div className="flex-[1] md:w-[5%] flex items-center justify-center">
+              <div className="w-[10%] md:w-[5%]">
                 <button
-                  className="text-lg font-semibold text-amber-500"
+                  className="text-xl hover:text-orange-500"
                   onClick={() => {
                     setuserDiv("fixed");
                     setuserDivData(items.user);
@@ -183,7 +183,7 @@ const AllOrders = () => {
             </div>
           ))
         ) : (
-          <div className="h-[100%] flex items-center justify-center text-2xl text-amber-500">
+          <div className="h-[100%] flex items-center justify-center text-2xl text-zinc-500">
             No orders found.
           </div>
         )}
@@ -197,8 +197,6 @@ const AllOrders = () => {
       )}
     </>
   );
-  
-  
 };
 
 export default AllOrders;

@@ -79,7 +79,7 @@ const Profile = () => {
           <div className="w-full mt-4">
             <Outlet />
           </div>
-          <MobileNav />
+          {/* <MobileNav /> */}
         </>
       )}
     </div>

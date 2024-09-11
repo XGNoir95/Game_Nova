@@ -21,7 +21,7 @@ const Sidebar = ({ data }) => {
         )}
         {data && (
           <>
-            <p className="text-3xl text-amber-500 font-semibold mb-">
+            <p className="text-3xl text-amber-500 font-semibold mb-2">
               {data.username}
             </p>
             <p className="text-xl text-zinc-300 mb-4">
