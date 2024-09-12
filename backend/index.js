@@ -12,13 +12,12 @@ const Cart = require("./routes/cart");
 const Order = require("./routes/order");
 
 
-// app.use(cors({
-//     origin: ["https://game-nova-front.vercel.app"],
-//     methods: ["POST", "GET"],
-//     credentials: true
-// }));
+app.use(cors({
+     origin: [""],
+     methods: ["POST", "GET", "PUT", "DELETE"],
+     credentials: true
+}));
 
-app.use(cors());
 app.use(express.json());
 
 // Root route
