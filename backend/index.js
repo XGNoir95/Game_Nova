@@ -13,7 +13,7 @@ const Order = require("./routes/order");
 
 
 app.use(cors({
-     origin: [""],
+     origin: ["https://game-nova-frontend.vercel.app"],
      methods: ["POST", "GET", "PUT", "DELETE"],
      credentials: true
 }));
