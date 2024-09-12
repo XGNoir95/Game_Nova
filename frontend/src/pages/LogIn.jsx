@@ -112,12 +112,12 @@ const LogIn = () => {
           </p>
 
 
-          <p className="flex mt-4 items-center text-amber-500 font-semibold">
-            For login to admin account:
-            <a className="text-pink-500 ml-2">
-              email:- admin123@gmail.com,     pass:- admin123
-            </a>
-          </p>
+          //<p className="flex mt-4 items-center text-amber-500 font-semibold">
+            //For login to admin account:
+            //<a className="text-pink-500 ml-2">
+              //email:- admin123@gmail.com,     pass:- admin123
+            //</a>
+          //</p>
 
         </div>
       </div>
