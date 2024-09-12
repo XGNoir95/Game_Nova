@@ -28,12 +28,12 @@ const LogIn = () => {
       } else {
 
 
-        // const response = await axios.post("https://game-nova-api.vercel.app/api/v1/sign-in", values, {
-        //   withCredentials: true
-        // });
+        const response = await axios.post("https://game-nova-backend.vercel.app/api/v1/sign-in", values, {
+          withCredentials: true
+        });
 
         
-        const response = await axios.post("http://localhost:1000/api/v1/sign-in", values);
+        //const response = await axios.post("http://localhost:1000/api/v1/sign-in", values);
         console.log("Login response:", response.data);
 
         dispatch(authActions.login());
@@ -41,7 +41,7 @@ const LogIn = () => {
 
         localStorage.setItem("id", response.data.id);
         localStorage.setItem("token", response.data.token);
-        localStorage.setItem("refreshToken", response.data.refreshToken); // Store refresh token
+        localStorage.setItem("refreshToken", response.data.refreshToken); 
         localStorage.setItem("role", response.data.role);
 
         console.log("Access Token:", localStorage.getItem("token"));

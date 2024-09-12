@@ -21,7 +21,7 @@ const AllOrders = () => {
     const fetchOrders = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:1000/api/v1/get-all-orders",
+          "https://game-nova-backend.vercel.app/api/v1/get-all-orders",
           { headers }
         );
         setAllOrders(response.data.data);
@@ -48,7 +48,7 @@ const AllOrders = () => {
     try {
       const id = allOrders[i]._id;
       const response = await axios.put(
-        `http://localhost:1000/api/v1/update-status/${id}`,
+        `https://game-nova-backend.vercel.app/api/v1/update-status/${id}`,
         values,
         { headers }
       );
@@ -69,7 +69,7 @@ const AllOrders = () => {
     try {
       const id = allOrders[i]._id;
       const response = await axios.delete(
-        `http://localhost:1000/api/v1/delete-order/${id}`,
+        `https://game-nova-backend.vercel.app/api/v1/delete-order/${id}`,
         { headers }
       );
       alert(response.data.message);
