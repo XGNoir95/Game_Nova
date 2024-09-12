@@ -8,10 +8,10 @@ const Trending = () => {
   useEffect(() => {
     const fetchRecentGames = async () => {
       try {
-        const response = await axios.get("http://localhost:1000/api/v1/get-recent-games");
+        const response = await axios.get("https://game-nova-backend.vercel.app/api/v1/get-recent-games");
         const recentGames = response.data.data;
         
-        // Assuming the most recent game is the first in the array
+        //most recent game
         if (recentGames && recentGames.length > 0) {
           setTrendingData(recentGames[0]);
         }
