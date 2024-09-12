@@ -104,12 +104,21 @@ const LogIn = () => {
               Log In
             </button>
           </div>
-          <p className="flex mt-4 items-center text-zinc-500 font-semibold">
+          <p className="flex justify-center items-center text-zinc-500 font-semibold mt-4 text-center">
             Don't have an account?
             <a href="/SignUp" className="text-amber-500 ml-2">
               Sign Up
             </a>
           </p>
+
+
+          <p className="flex mt-4 items-center text-amber-500 font-semibold">
+            For login to admin account:
+            <a className="text-pink-500 ml-2">
+              email:- admin123@gmail.com,     pass:- admin123
+            </a>
+          </p>
+
         </div>
       </div>
     </div>
