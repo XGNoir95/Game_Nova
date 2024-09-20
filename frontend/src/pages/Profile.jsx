@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from '../components/Profile/Sidebar';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Loader from '../components/Loader/loader';
 import MobileNav from '../components/Profile/MobileNav';
 
 const Profile = () => {
   const [Profile, setProfile] = useState();
+  const navigate = useNavigate();
   const token = localStorage.getItem('token');
   const refreshToken = localStorage.getItem('refreshToken');
   const headers = {
@@ -19,18 +20,23 @@ const Profile = () => {
       try {
         const response = await axios.get(
           'https://game-nova-backend.vercel.app/api/v1/get-user-information',
+          //'http://localhost:1000/api/v1/get-user-information',
           { headers }
         );
 
         console.log('Fetched Profile data:', response.data);
         setProfile(response.data);
       } catch (error) {
+        if (!token) {
+          navigate('/');
+        }
         if (error.response && error.response.status === 403) {
           console.log('Access token expired, trying to refresh...');
           if (refreshToken) {
             try {
               const refreshResponse = await axios.post(
                 'https://game-nova-backend.vercel.app/api/v1/token',
+                //'http://localhost:1000/api/v1/get-user-information',
                 { token: refreshToken }
               );
 
@@ -41,6 +47,7 @@ const Profile = () => {
 
               const retryResponse = await axios.get(
                 'https://game-nova-backend.vercel.app/api/v1/get-user-information',
+                //'http://localhost:1000/api/v1/get-user-information',
                 {
                   headers: {
                     id: localStorage.getItem('id'),
