@@ -15,6 +15,8 @@ const UserOrderHistory = () => {
       try {
         const response = await Axios.get(
           'https://game-nova-backend.vercel.app/api/v1/get-order-history',
+          //'http://localhost:1000/api/v1/get-order-history',
+
           { headers }
         );
         setOrderHistory(response.data.data);
@@ -91,20 +93,22 @@ const UserOrderHistory = () => {
               </div>
               <div className="flex-[1] md:w-[10%] text-left">
                 <h1 className="font-semibold">
-                  {items.status === 'Order placed' ? (
-                    <div className="text-yellow-500">{items.status}</div>
-                  ) : items.status === 'Canceled' ? (
-                    <div className="text-red-500">{items.status}</div>
-                  ) : items.status === 'Out for delivery' ? (
-                    <div className="text-amber-500">{items.status}</div>
-                  ) : (
+                {items.status === "Order Placed" ? (
                     <div className="text-green-500">{items.status}</div>
+                  ) : items.status === "Cancelled" ? (
+                    <div className="text-red-500">{items.status}</div>
+                  ) : items.status === "Processing" ? (
+                    <div className="text-amber-500">{items.status}</div>
+                  ) : items.status === "Owned" ? (
+                    <div className="text-green-500">{items.status}</div>
+                  ) : (
+                    <div className="text-pink-500">{items.status}</div>
                   )}
                 </h1>
               </div>
               <div className="flex-[1] md:w-[5%] text-left">
                 <h1 className="text-lg font-semibold text-zinc-400">
-                  Cash On Delivery
+                  BKash
                 </h1>
               </div>
             </div>
