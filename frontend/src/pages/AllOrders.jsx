@@ -22,6 +22,7 @@ const AllOrders = () => {
       try {
         const response = await axios.get(
           "https://game-nova-backend.vercel.app/api/v1/get-all-orders",
+          //"http://localhost:1000/api/v1/get-all-orders",
           { headers }
         );
         setAllOrders(response.data.data);
@@ -48,7 +49,9 @@ const AllOrders = () => {
     try {
       const id = allOrders[i]._id;
       const response = await axios.put(
-        `https://game-nova-backend.vercel.app/api/v1/update-status/${id}`,
+         `https://game-nova-backend.vercel.app/api/v1/update-status/${id}`,
+        //`http://localhost:1000/api/v1/update-status/${id}`,
+
         values,
         { headers }
       );
@@ -70,6 +73,8 @@ const AllOrders = () => {
       const id = allOrders[i]._id;
       const response = await axios.delete(
         `https://game-nova-backend.vercel.app/api/v1/delete-order/${id}`,
+        //`http://localhost:1000/api/v1/delete-order/${id}`,
+
         { headers }
       );
       alert(response.data.message);
@@ -155,14 +160,16 @@ const AllOrders = () => {
                     className="hover:scale-105 transition-all duration-300"
                     onClick={() => setOptions(i)}
                   >
-                    {items.status === "Order placed" ? (
-                      <div className="text-pink-500">{items.status}</div>
-                    ) : items.status === "Canceled" ? (
-                      <div className="text-red-500">{items.status}</div>
-                    ) : items.status === "Out for delivery" ? (
-                      <div className="text-amber-500">{items.status}</div>
-                    ) : (
+                    {items.status === "Order Placed" ? (
                       <div className="text-green-500">{items.status}</div>
+                    ) : items.status === "Cancelled" ? (
+                      <div className="text-red-500">{items.status}</div>
+                    ) : items.status === "Processing" ? (
+                      <div className="text-amber-500">{items.status}</div>
+                    ) : items.status === "Owned" ? (
+                      <div className="text-green-500">{items.status}</div>
+                    ) : (
+                      <div className="text-pink-500">{items.status}</div>
                     )}
                   </button>
                   <div className={`${options === i ? "block" : "hidden"} flex mt-4`}>
@@ -173,7 +180,7 @@ const AllOrders = () => {
                       onChange={change}
                       value={values.status}
                     >
-                      {["Order placed", "Out for delivery", "Delivered", "Canceled"].map(
+                      {["Order Placed", "Processing", "Owned", "Cancelled"].map(
                         (status, index) => (
                           <option value={status} key={index}>
                             {status}
@@ -217,7 +224,7 @@ const AllOrders = () => {
             </div>
           ))
         ) : (
-          <div className="h-[100%] flex items-center justify-center text-2xl text-zinc-500">
+          <div className="h-[100%] flex items-center justify-center text-2xl text-amber-500">
             No orders found.
           </div>
         )}
