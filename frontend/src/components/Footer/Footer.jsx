@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto flex items-center justify-center space-x-8">
         
         <img 
-          src="https://gifyu.com/image/SAm5V" 
+          src="https://s1.gifyu.com/images/SAm5V.png" 
           alt="Game Nova Logo" 
           style={{ width: "150px", height: "150px" }} 
         />
